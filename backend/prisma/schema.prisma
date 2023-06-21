@@ -1,49 +1,50 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  username String @unique
-  password String 
-  email String 
+  id         Int       @id @default(autoincrement())
+  username   String    @unique
+  email      String    @unique
+  password   String
   created_at DateTime
-  products Product[]
-  controls Control[]
+  controls   Control[]
+  messages   Message[]
+
   @@map("user")
 }
 
-model Product {
-   id Int @id @default(autoincrement())
-   name String
-   description String
-   quantity Float
-   price Float
-   created_at DateTime
-   userId Int
-   user User @relation(fields: [userId], references: [id])
-   controls Control[]
-   @@map("product")
+model Message {
+  id         Int       @id @default(autoincrement())
+  title      String
+  message    String
+  quantity   Int
+  likes      Int
+  published  Boolean
+  created_at DateTime
+  userId     Int
+  controls   Control[]
+  user       User      @relation(fields: [userId], references: [id])
+
+  @@map("message")
 }
 
 model Control {
-  id Int @id @default(autoincrement())
-  type String
-  quantity Float
-  price Float
-  created_at DateTime
-  userId Int
-  user User @relation(fields: [userId], references: [id])
-  productId Int
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  messageId    Int
+  type         String
+  id           Int      @id @default(autoincrement())
+  controlValue String   @map("control")
+  created_at   DateTime
+  quantity     Int
+  likes        Int
+  userId       Int
+  message      Message  @relation(fields: [messageId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
+
   @@map("control")
 }
-
