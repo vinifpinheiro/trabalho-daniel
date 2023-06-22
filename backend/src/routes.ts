@@ -97,14 +97,14 @@ export async function AppRoutes(app: FastifyInstance) {
     return messages;
   });
 
-  app.patch("/message/compra", async (request) => {
-    const compraBody = z.object({
+  app.patch("/message/enviar", async (request) => {
+    const enviarBody = z.object({
       id: z.number(),
       userId: z.number(),
       quantity: z.number(),
       likes: z.number(),
     });
-    const { id, userId, quantity, likes } = compraBody.parse(request.body);
+    const { id, userId, quantity, likes } = enviarBody.parse(request.body);
 
     let messageUpdated = await prisma.message.update({
       where: {
