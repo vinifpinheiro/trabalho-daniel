@@ -142,7 +142,7 @@ const Produto = () => {
       };
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen w-screen">
+        <div className="flex flex-col items-center justify-center h-screen w-screen bg-gradient-to-br from-blue-300 to-red-400">
           <div className="max-w-md mx-auto">
             {/* inicia o formulário para cadastrar um produto */ }
              <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-4">
