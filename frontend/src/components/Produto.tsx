@@ -159,17 +159,6 @@ const Produto = () => {
             />
           </div>
           <div>
-            <label htmlFor="description" className="block font-semibold">
-              Descrição:
-            </label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            ></textarea>
-          </div>
-          <div>
             <label htmlFor="quantity" className="block font-semibold">
               Quantidade:
             </label>
@@ -183,7 +172,7 @@ const Produto = () => {
           </div>
           <div>
             <label htmlFor="price" className="block font-semibold">
-              Preço:
+              Likes:
             </label>
             <input
               type="number"
@@ -192,10 +181,21 @@ const Produto = () => {
               onChange={(e) => setPrice(Number(e.target.value))}
               className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
+             <div>
+            <label htmlFor="description" className="block font-semibold">
+              Descrição:
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            ></textarea>
+          </div>
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md hover:bg-blue-600"
+            className="hover:shadow-form rounded-md bg-[#6A64F1] mt-4 py-2 px-4 text-center text-base font-semibold text-white outline-none"
           >
             Cadastrar Produto
           </button>
